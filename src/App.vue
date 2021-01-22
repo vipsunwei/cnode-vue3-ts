@@ -1,30 +1,58 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <w-navigator
+    :height="50"
+    :style="{ paddingLeft: '50px', paddingRight: '50px' }"
+  ></w-navigator>
+  <div class="main">
+    <router-view />
   </div>
-  <router-view />
 </template>
 
+<script lang="ts">
+import { defineComponent } from "vue";
+import WNavigator from "@/components/WNavigator.vue";
+export default defineComponent({
+  name: "App",
+  components: {
+    WNavigator
+  },
+  setup() {
+    return {};
+  }
+});
+</script>
+
 <style lang="scss">
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: #e1e1e1;
+  color: #333;
+  font-size: 13px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.main {
+  box-sizing: border-box;
+  overflow-y: auto;
+  // flex: 1;
+  // padding: 20px;
 }
 </style>
